@@ -10,7 +10,10 @@ object WhiteBackgroundRemover {
         val w = bmp.width
         val h = bmp.height
         val pixels = IntArray(w * h)
-        bmp.getPixels(pixels, 0, w, 0, w, h)
+        
+        // ИСПРАВЛЕНО: добавили '0' для координаты Y
+        // Сигнатура: (pixels, offset, stride, x, y, width, height)
+        bmp.getPixels(pixels, 0, w, 0, 0, w, h)
 
         val isWhite = BooleanArray(w * h) { i ->
             val c = pixels[i]
@@ -37,7 +40,8 @@ object WhiteBackgroundRemover {
             if (y < h - 1) { val j = i + w; if (isWhite[j] && !visited[j]) { visited[j] = true; queue[tail++] = j } }
         }
 
-        bmp.setPixels(pixels, 0, w, 0, w, h)
+        // ИСПРАВЛЕНО: добавили '0' для координаты Y
+        bmp.setPixels(pixels, 0, w, 0, 0, w, h)
         return bmp
     }
 }
