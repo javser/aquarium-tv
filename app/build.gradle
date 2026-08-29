@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace 'com.example.aquarium'
+    namespace 'ru.javser.aquarium'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.example.aquarium"
+        applicationId "ru.javser.aquarium"
         minSdk 24
         targetSdk 34
         versionCode 1
